@@ -23,9 +23,10 @@ if __name__ == '__main__':
 # print(torch.randn(3, 2))
 #
 import numpy as np
+
 #
 # a = np.mat([[1, 2], [3, 4]])
 # print(a)
 # print(a.dot(a.I))
 
-print(np.linspace(1,100,100))
+print(np.linspace(1, 100, 100))
