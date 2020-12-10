@@ -24,9 +24,17 @@ if __name__ == '__main__':
 #
 import numpy as np
 
-#
 # a = np.mat([[1, 2], [3, 4]])
 # print(a)
 # print(a.dot(a.I))
 
-print(np.linspace(1, 100, 100))
+a = np.zeros((2, 1))
+b = np.zeros(2)
+
+c = np.array([[1, 2],
+              [3, 4],
+              [5, 6]])
+print(b[:, np.newaxis].ravel())  # 变成列向量再变回数组
+print(b)
+print(c @ b)
+print(c @ a)
