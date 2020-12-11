@@ -34,7 +34,9 @@ b = np.zeros(2)
 c = np.array([[1, 2],
               [3, 4],
               [5, 6]])
+x = map(lambda x: x + 1, b)
+print(np.array(list(x)))
 print(b[:, np.newaxis].ravel())  # 变成列向量再变回数组
-print(b)
+print(b @ b)
 print(c @ b)
 print(c @ a)
