@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-data = pd.read_csv('ex1data1.txt', header=None, names=['population', 'profit'])
+data = pd.read_csv('ex1data1.txt', header=None, names=['population', 'profit'])  # read_csv是读取以逗号（或其他）分隔的文件
 
 # print(data.head())
 
@@ -67,6 +67,7 @@ model.fit(X, y)
 
 x = np.array(X[:, 1])
 f = model.predict(X)
+
 
 # fig, ax = plt.subplots(figsize=(6, 4))
 # ax.plot(x, f, 'r', label='Prediction')
