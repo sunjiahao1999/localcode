@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib
 from scipy.io import loadmat
 from scipy.optimize import minimize
+from sklearn.metrics import classification_report
 
 data = loadmat('ex3data1.mat')
 
@@ -56,6 +57,8 @@ def one_vs_all(X, y, num_labels, lamda):
 
 
 all_theta = one_vs_all(data['X'], data['y'], 10, 1)
+
+
 # print(all_theta[0, :])
 
 
@@ -70,3 +73,4 @@ y_pre = predict_all(data['X'], all_theta)
 correct = [1 if a == b else 0 for (a, b) in zip(y_pre, data['y'])]
 accuracy = sum(correct) / len(correct)
 print('准确率为%.2f%%' % (accuracy * 100))
+print(classification_report(data['y'], y_pre))
