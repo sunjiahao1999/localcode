@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib
 from scipy.io import loadmat
 from scipy.optimize import minimize
 
@@ -9,6 +10,19 @@ data = loadmat('ex3data1.mat')
 
 # print(data)
 # print(data['X'].shape, data['y'].shape)
+# def plot_an_image(image):  # 绘图函数
+#
+#     fig, ax = plt.subplots(figsize=(1, 1))
+#     ax.matshow(image.reshape((20, 20)).T, cmap=matplotlib.cm.binary)
+#     plt.xticks(np.array([]))  # just get rid of ticks
+#     plt.yticks(np.array([]))
+#
+#
+# pick_one = np.random.randint(0, 5000)
+# plot_an_image(data['X'][pick_one, :])
+# plt.show()
+
+
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
@@ -42,7 +56,7 @@ def one_vs_all(X, y, num_labels, lamda):
 
 
 all_theta = one_vs_all(data['X'], data['y'], 10, 1)
-print(all_theta[0, :])
+# print(all_theta[0, :])
 
 
 def predict_all(X, all_theta):
