@@ -28,15 +28,20 @@ import numpy as np
 # print(a)
 # print(a.dot(a.I))
 
-a = np.zeros((2, 1))
-b = np.zeros(2)
+# a = np.zeros((2, 1))
+# b = np.zeros(2)
+#
+# c = np.array([[1, 2],
+#               [3, 4],
+#               [5, 6]])
+# x = map(lambda x: x + 1, b)
+# print(np.array(list(x)))
+# print(b[:, np.newaxis].ravel())  # 变成列向量再变回数组
+# print(b @ b)
+# print(c @ b)
+# print(c @ a)
 
-c = np.array([[1, 2],
-              [3, 4],
-              [5, 6]])
-x = map(lambda x: x + 1, b)
-print(np.array(list(x)))
-print(b[:, np.newaxis].ravel())  # 变成列向量再变回数组
-print(b @ b)
-print(c @ b)
-print(c @ a)
+a = np.array([1, 2, 3])
+b = np.array([1, 2, 3])
+c = b[:, None] @ a[None, :]
+print(c)

@@ -15,7 +15,7 @@ data = loadmat('ex3data1.mat')
 #
 #     fig, ax = plt.subplots(figsize=(1, 1))
 #     ax.matshow(image.reshape((20, 20)).T, cmap=matplotlib.cm.binary)
-#     plt.xticks(np.array([]))  # just get rid of ticks
+#     plt.xticks(np.array([]))  # 消除坐标
 #     plt.yticks(np.array([]))
 #
 #

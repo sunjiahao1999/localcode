@@ -36,8 +36,8 @@ def cost(theta, X, y):
 
 data.insert(0, 'ones', 1)
 # print(data.head())
-X = np.array(data.iloc[:, :-1].values)
-y = np.array(data.iloc[:, -1].values)
+X = np.array(data.iloc[:, :-1].values) # (100,3)
+y = np.array(data.iloc[:, -1].values)  # (100,)
 theta = np.zeros(X.shape[1])
 
 

@@ -25,4 +25,4 @@ z3 = a2 @ theta2.T
 a3 = sigmoid(z3)
 # print(a3.shape)
 y_pre = np.argmax(a3, axis=1) + 1
-print(classification_report(y,y_pre))
+print(classification_report(y, y_pre))
