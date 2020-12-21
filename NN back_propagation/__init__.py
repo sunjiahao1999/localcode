@@ -88,9 +88,7 @@ def re_cost(theta, X, y, l=1):
     return cost(theta, X, y) + reg_t1 + reg_t2
 
 
-print(re_cost(theta, X, y))
-
-
+# print(re_cost(theta, X, y))
 def gradient(theta, X, y):
     t1, t2 = deserialize(theta)  # (25,401),(10,26)
     m = X.shape[0]
@@ -150,7 +148,9 @@ def my_gradiant(theta, X, y):
 
 d1_, d2_ = deserialize(my_gradiant(theta, X, y))
 d1, d2 = deserialize(gradient(theta, X, y))
-print(d1.shape, d2.shape)
+
+
+# print(d1.shape, d2.shape)
 
 
 def expand_array(arr):
@@ -166,12 +166,12 @@ def gradient_checking(theta, X, y, epsilon, regularized=False):
             return (cost(plus, X, y) - cost(minus, X, y)) / (epsilon * 2)
 
     theta_matrix = expand_array(theta)  # expand to (10285, 10285)
-    epsilon_matrix = np.identity(len(theta)) * epsilon
+    epsilon_matrix = np.identity(len(theta)) * epsilon  # identity生成单位方阵
 
     plus_matrix = theta_matrix + epsilon_matrix
     minus_matrix = theta_matrix - epsilon_matrix
 
-    # calculate numerical gradient with respect to all theta
+    # 对每一行求导，每一行都是一个theta参数的偏导
     numeric_grad = np.array([a_numeric_grad(plus_matrix[i], minus_matrix[i], regularized)
                              for i in range(len(theta))])
 
@@ -184,3 +184,54 @@ def gradient_checking(theta, X, y, epsilon, regularized=False):
         '''If your backpropagation implementation is correct,
         the relative difference will be smaller than 10e-9 (assume epsilon=0.0001).
         Relative Difference: {}'''.format(diff))
+
+
+# gradient_checking(theta, X, y, epsilon=0.0001, regularized=True)
+# gradient_checking(theta, X, y, epsilon=0.0001)
+def nn_training(X, y):
+    """regularized version
+    the architecture is hard coded here... won't generalize
+    """
+    init_theta = np.random.uniform(-0.12, 0.12, 10285)  # 25*401 + 10*26
+
+    res = opt.minimize(fun=re_cost,
+                       x0=init_theta,
+                       args=(X, y, 1),
+                       method='TNC',
+                       jac=re_gradient,
+                       options={'maxiter': 400})
+    return res
+
+
+def show_accuracy(theta, X, y):
+    _, _, _, _, h = feed_forward(theta, X)
+
+    y_pred = np.argmax(h, axis=1) + 1
+
+    print(classification_report(y, y_pred))
+
+
+res = nn_training(X, y)
+final_theta = res.x
+show_accuracy(final_theta, X, y_raw)
+
+
+def plot_hidden_layer(theta):
+    """
+    theta: (10285, )
+    """
+    final_theta1, _ = deserialize(theta)
+    hidden_layer = final_theta1[:, 1:]  # ger rid of bias term theta
+
+    fig, ax_array = plt.subplots(nrows=5, ncols=5, sharey=True, sharex=True, figsize=(5, 5))
+
+    for r in range(5):
+        for c in range(5):
+            ax_array[r, c].matshow(hidden_layer[5 * r + c].reshape((20, 20)),
+                                   cmap=matplotlib.cm.binary)
+            plt.xticks(np.array([]))
+            plt.yticks(np.array([]))
+
+
+plot_hidden_layer(final_theta)
+plt.show()
