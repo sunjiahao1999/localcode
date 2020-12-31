@@ -24,6 +24,7 @@ if __name__ == '__main__':
 #
 import numpy as np
 
+
 # a = np.mat([[1, 2], [3, 4]])
 # print(a)
 # print(a.dot(a.I))
@@ -41,7 +42,43 @@ import numpy as np
 # print(c @ b)
 # print(c @ a)
 
-a = np.array([1, 2, 3])
-b = np.array([1, 2, 3])
-c = b[:, None] @ a[None, :]
-print(c)
+# a = np.array([1, 2, 3])
+# b = np.array([1, 2, 3])
+# c = b[:, None] @ a[None, :]
+# print(c)
+# a=[1]
+# def wha(a):
+#     b=a[0]
+#     b+=1
+#     return b
+# print(a)
+# wha(a)
+# print(a)
+# def serialize(a, b):
+#     return np.concatenate((a.ravel(), b.ravel()))
+#
+#
+# def deserialize(seq):
+#     return seq[:2], seq[2:]
+#
+#
+# theta1, theta2 = np.array([1, 1]), np.array([2, 4])
+# theta = serialize(theta1, theta2)
+#
+#
+# def ans(theta):
+#     t1, t2 = deserialize(theta)
+#     t1[0] = 0
+#     t2[0] = 0
+#     return serialize(t1,t2)
+#
+# def smd(t1,t2):
+#     t1[0]=0
+#     t2[0]=1
+#     return
+# ans(theta)
+# print(theta1,theta2)
+# smd(theta1,theta2)
+# print(theta1,theta2)
+import pandas as pd
+data={'a':[]}

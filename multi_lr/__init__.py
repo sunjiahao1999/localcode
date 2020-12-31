@@ -65,6 +65,7 @@ all_theta = one_vs_all(data['X'], data['y'], 10, 1)
 def predict_all(X, all_theta):
     X = np.insert(X, 0, 1, axis=1)
     h = sigmoid(X @ all_theta)
+    a=np.sum(h,axis=1)
     h_max = np.argmax(h, axis=1) + 1
     return h_max
 

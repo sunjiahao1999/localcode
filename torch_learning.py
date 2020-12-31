@@ -1,4 +1,4 @@
-import torch
+import torch as pt
 
 # torch.manual_seed(0)
 # torch.cuda.manual_seed(0)
@@ -19,13 +19,27 @@ import torch
 # print(x_cp)
 # x = torch.tensor([[1., 1.], [2., 3.]])
 # y = x.numpy()
-# print(x, y)
-x = torch.ones(2, 2, requires_grad=True)
-# print(x)
-# print(x.grad_fn)
-y = x + 2
-# print(y)
-z = y * y * 3
-out = z.mean()
-print(z.is_leaf)
-
+# # print(x, y)
+# x = torch.ones(2, 2, requires_grad=True)
+# # print(x)
+# # print(x.grad_fn)
+# y = x + 2
+# # print(y)
+# z = y * y * 3
+# out = z.mean()
+# print(z.is_leaf)
+# j = pt.LongTensor([1, 2, 3])
+# a = pt.randn(10, 2)
+# a.requires_grad_(True)
+# b=(a**2).sum()
+# b.backward()
+# print(a.index_select(0, j))
+# print(a.grad)
+# print(a.mean())
+# # a.grad.data.zero_()
+# # print(a.grad)
+# print(b)
+# print(a.shape)
+a = pt.tensor([[[[1, 2, 3], [4, 5, 6]]], [[[2, 3, 4], [23, 4, 5]]]])
+print(a.reshape(-1,6).shape)
+print(a.reshape(-1,6))
